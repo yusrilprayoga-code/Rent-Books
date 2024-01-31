@@ -32,7 +32,7 @@ s
                       >
                       <input
                         type="password"
-                        class="form-control"
+                        class="form-control text-light"
                         id="password"
                         placeholder="Masukkan password..."
                       />
