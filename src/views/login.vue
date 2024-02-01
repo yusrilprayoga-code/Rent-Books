@@ -16,7 +16,7 @@
                   <form @submit.prevent="login">
                     <div class="mb-3">
                       <label for="email" class="form-label"
-                        >Email address</label
+                        >Email </label
                       >
                       <input
                       v-model="email"
