@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex">
-    <sidebar />
+    <sidebar v-if="loggedIn" />
     <div class="content">
       <router-view />
     </div>
@@ -9,11 +9,21 @@
 
 <script>
 import sidebar from "@/components/sidebar.vue";
+
 export default {
   components: {
     sidebar,
   },
   name: "App",
+  data() {
+    return {
+      loggedIn: true,
+    };
+  },
+
+  methods: {
+
+  },
 };
 </script>
 

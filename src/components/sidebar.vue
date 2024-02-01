@@ -1,12 +1,12 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-      <aside :class="{ 'is-expanded': is_expanded }">
+  <aside :class="{ 'is-expanded': is_expanded }">
     <div class="d-flex justify-content-center align-items-center mt-2 logo">
       <img src="../assets/logo.png" alt="logo" width="50" />
-      <div class=" ms-2">
+      <div class="ms-2">
         <h3 class="mb-0">Vue Admin</h3>
-        <small>Admin Template</small>
-      </div>  
+        <small>Admin Perpustakaan</small>
+      </div>
     </div>
 
     <div class="menu-toggle-wrap">
@@ -19,15 +19,15 @@
         <i class="bx bxs-dashboard"></i>
         <span class="text">Dashboard</span>
       </router-link>
-      <router-link to="/about" class="button">
+      <router-link to="/books" class="button">
         <i class="bx bx-book"></i>
         <span class="text">Books</span>
       </router-link>
-      <router-link to="/team" class="button">
+      <router-link to="/peminjaman" class="button">
         <i class="bx bx-group"></i>
         <span class="text">Peminjaman</span>
       </router-link>
-      <router-link to="/contact" class="button">
+      <router-link to="/harga" class="button">
         <i class="bx bx-money"></i>
         <span class="text">Harga</span>
       </router-link>
@@ -35,44 +35,32 @@
 
     <div class="flex"></div>
     <div class="menu footer">
-      <router-link to="/login" class="button" v-if="login">
-        <i class="bx bx-user"></i>
-        <span class="text">Dummy User</span>
-      </router-link>
-      <router-link to="/login" class="button" v-if="login">
+      <router-link to="/login" class="button">
         <i class="bx bx-log-in"></i>
         <span class="text">Logout</span>
       </router-link>
     </div>
-    </aside>
+  </aside>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const is_expanded = ref(
-  localStorage.getItem('is_expanded') === 'true' || false
+  localStorage.getItem("is_expanded") === "true" || false
 );
 
 const toggleMenu = () => {
   is_expanded.value = !is_expanded.value;
-  localStorage.setItem('is_expanded', is_expanded.value.toString());
+  localStorage.setItem("is_expanded", is_expanded.value.toString());
 };
-
-const login = ref(true);
-
 </script>
 
 <style>
-* {
-  box-sizing: border-box;
-  font-family: poppins, sans-serif;
-}
-
 aside {
-  background-color: #2c3e50; 
-  color: #ecf0f1; 
-  width: 250px; 
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  width: 250px;
   height: 100vh;
   overflow: hidden;
   transition: width 0.3s ease;
@@ -132,11 +120,11 @@ aside {
   color: #ecf0f1;
   text-decoration: none;
   padding: 10px;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: #34495e; 
+  background-color: #34495e;
 }
 
 .text {
@@ -149,19 +137,19 @@ i {
   flex: 1;
 }
 .is-expanded {
-  width: 80px; 
+  width: 80px;
 }
 
 .is-expanded .menu h3 {
-  display: none; 
+  display: none;
 }
 
 .is-expanded .menu .button .text {
-  display: none; 
+  display: none;
 }
 
 .is-expanded .menu .button i {
-  margin-right: 0; 
+  margin-right: 0;
 }
 
 .is-expanded .menu-toggle i {
@@ -169,18 +157,31 @@ i {
 }
 
 .is-expanded .logo small {
-  display: none; 
+  display: none;
 }
 
 .is-expanded .logo h3 {
   display: none;
 }
 
+@media (max-width: 1024px) {
+  aside {
+    height: 100vh;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
   }
-
+  aside {
+    height: 100vh;
+  }
 }
 
+@media (max-width: 425px) {
+  aside {
+    height: 100v;
+  }
+}
 </style>

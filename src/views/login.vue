@@ -1,5 +1,4 @@
 <!-- eslint-disable vue/multi-word-component-names -->
-s
 <template>
   <div class="container">
     <div class="row justify-content-center">
@@ -49,9 +48,7 @@ s
                       >Forgot Password?</router-link
                     >
                   </div>
-                  <div class="text-center">
-                    <router-link to="" class="small">Create an Account!</router-link>
-                  </div>
+
                 </div>
               </div>
             </div>
