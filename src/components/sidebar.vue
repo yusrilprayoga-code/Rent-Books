@@ -5,7 +5,9 @@
       <img src="../assets/logo.png" alt="logo" width="50" />
       <div class="ms-2">
         <h3 class="mb-0">Vue Admin</h3>
-        <small>Admin Perpustakaan</small>
+        <small>
+          {{ data.User.name }}
+        </small>
       </div>
     </div>
 
@@ -35,8 +37,8 @@
 
     <div class="flex"></div>
     <div class="menu footer">
-      <router-link to="/login" class="button">
-        <i class="bx bx-log-in"></i>
+      <router-link to="/login" class="button" @click="logout">
+        <i class="bx bx-log-out"></i>
         <span class="text">Logout</span>
       </router-link>
     </div>
@@ -44,6 +46,8 @@
 </template>
 
 <script setup>
+import axios from "axios";
+import { onMounted, reactive } from "vue";
 import { ref } from "vue";
 
 const is_expanded = ref(
@@ -53,7 +57,55 @@ const is_expanded = ref(
 const toggleMenu = () => {
   is_expanded.value = !is_expanded.value;
   localStorage.setItem("is_expanded", is_expanded.value.toString());
+}
+
+const data = reactive({
+    User: "loading...",
+    logout() {
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    },
+  });
+
+
+const fetchUser = async () => {
+  try {
+    const response = await axios.get("http://127.0.0.1:8000/api/me", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    data.User = response.data;
+    console.log(response.data);
+  } catch (error) {
+    console.log(error);
+  }
 };
+
+const loginAuth = ref(localStorage.getItem("token") ? true : false);
+
+const logout = async () => {
+  try{
+    const response = await axios.get("http://127.0.0.1:8000/api/logout", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    data.logout = response.data;
+    console.log(data.logout);
+    localStorage.removeItem("token");
+    loginAuth.value = false;
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 1000);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+onMounted(() => {
+  fetchUser();
+});
 </script>
 
 <style>

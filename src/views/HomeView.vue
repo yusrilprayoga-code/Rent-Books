@@ -3,7 +3,6 @@
     <div class="row row-cols-1 row-cols-md-4 g-4">
       <div class="col">
         <div class="card bg-success-subtle">
-          <img src="" class="card-img-top" alt="..." />
           <div class="card-body">
             <h1 class="text-center">1</h1>
             <i class="bx bx-user homei"></i>
@@ -13,7 +12,6 @@
       </div>
       <div class="col">
         <div class="card bg-primary-subtle">
-          <img src="" class="card-img-top" alt="..." />
           <div class="card-body">
             <h1 class="text-center">
               {{ books.length }}
@@ -25,7 +23,6 @@
       </div>
       <div class="col">
         <div class="card bg-warning-subtle">
-          <img src="" class="card-img-top" alt="..." />
           <div class="card-body">
             <h1 class="text-center">
               {{ books.length }}
@@ -37,7 +34,6 @@
       </div>
       <div class="col">
         <div class="card bg-danger-subtle">
-          <img src="" class="card-img-top" alt="..." />
           <div class="card-body">
             <h1 class="text-center">
               {{ books.length }}
@@ -78,6 +74,7 @@ export default {
         console.error(error);
       }
     },
+
   },
 
   mounted() {

@@ -13,12 +13,13 @@
                     <h1 class="h4 text-gray mb-4">Welcome Back!</h1>
                   </div>
                   <hr />
-                  <form action="" method="">
+                  <form @submit.prevent="login">
                     <div class="mb-3">
                       <label for="email" class="form-label"
                         >Email address</label
                       >
                       <input
+                      v-model="email"
                         type="email"
                         class="form-control"
                         id="email"
@@ -31,13 +32,14 @@
                       >
                       <input
                         type="password"
-                        class="form-control text-light"
+                        v-model="password"
+                        class="form-control"
                         id="password"
                         placeholder="Masukkan password..."
                       />
                     </div>
                     <div class="d-grid gap-2">
-                      <button class="btn btn-success" type="button">
+                      <button class="btn btn-success" type="submit">
                         Login
                       </button>
                     </div>
@@ -60,9 +62,45 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "login",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+
+  methods: {
+    login() {
+      if (this.email === "" || this.password === "") {
+        return; 
+      }
+      axios
+        .post("http://127.0.0.1:8000/api/login", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => {
+          const token = response.data;
+          console.log("Token:", token);
+          localStorage.setItem("token", token);
+          this.$root.$emit("updateAuthToken");
+          window.location.href = "/";
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      },
+  },
+
+  mounted() {
+    if (localStorage.getItem("token")) {
+      this.$router.push("/");
+    }
+  },
 };
 </script>
 
