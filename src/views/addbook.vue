@@ -16,7 +16,7 @@
         <label for="year" class="form-label">Tahun Terbit</label>
         <input type="text" id="year" class="form-control" v-model="year" />
       </div>
-      <!-- <div class="input mb-3">
+      <div class="input mb-3">
           <label for="image" class="form-label">Cover</label>
           <input type="file" class="form-control" id="image" @change="handleFileChange" />
         </div>
