@@ -6,7 +6,7 @@
       <div class="ms-2">
         <h3 class="mb-0">Vue Admin</h3>
         <small>
-          {{ data.User.name }}
+          {{ data.User.name ? data.User.name : "Loading...." }}
         </small>
       </div>
     </div>
@@ -59,11 +59,10 @@ const toggleMenu = () => {
   localStorage.setItem("is_expanded", is_expanded.value.toString());
 }
 
-const data = reactive({
-    User: "loading...",
+  const data = reactive({
+    User: "",
     logout() {
       localStorage.removeItem("token");
-      window.location.href = "/login";
     },
   });
 
@@ -95,9 +94,7 @@ const logout = async () => {
     console.log(data.logout);
     localStorage.removeItem("token");
     loginAuth.value = false;
-    setTimeout(() => {
-      window.location.href = "/login";
-    }, 1000);
+    window.location.href = "#/login";
   } catch (error) {
     console.log(error);
   }

@@ -12,19 +12,25 @@ import sidebar from "@/components/sidebar.vue";
 
 export default {
   components: {
-    sidebar,
+    sidebar, 
   },
   name: "App",
   data() {
     return {
-      loggedIn: true,
+      loggedIn: null
     };
   },
-
   methods: {
-
+    isLogin() {
+      const isLogin = (localStorage.getItem("token")) ? true : false
+      this.loggedIn = isLogin;
+    }
   },
+  mounted() {
+    this.isLogin()
+  }, 
 };
+
 </script>
 
 <style>
