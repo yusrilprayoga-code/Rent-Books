@@ -3,7 +3,7 @@
     <div class="title">
       <h3 class="text-center">All Books</h3>
       <div class="create ">
-        <router-link to="/books/create" class="btn btn-success mb-3">
+        <router-link to="/books/addbook" class="btn btn-success mb-3">
           <i class="bx bx-plus"></i>
           <span class="text">Tambah Buku</span>
         </router-link>
