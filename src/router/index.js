@@ -30,7 +30,7 @@ const routes = [
     path: '/books/addbook',
     name: 'addbook',
     component: addbook
-  }
+  }, 
 ]
 
 const router = createRouter({

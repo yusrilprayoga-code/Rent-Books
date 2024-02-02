@@ -2,7 +2,7 @@
   <div class="home mt-5">
     <div class="title">
       <h3 class="text-center">All Books</h3>
-      <div class="create ">
+      <div class="create">
         <router-link to="/books/addbook" class="btn btn-success mb-3">
           <i class="bx bx-plus"></i>
           <span class="text">Tambah Buku</span>
@@ -10,8 +10,7 @@
       </div>
     </div>
     <div v-if="loading" class="loading">
-      <div class="spinner-border text-primary align-content-center justify-content-center" role="status">
-      </div>
+      <div class="spinner-border text-primary align-content-center justify-content-center" role="status"></div>
     </div>
     <div v-else>
       <table class="table table-responsive table-dark table-striped">
@@ -33,19 +32,17 @@
             <td>{{ book.title }}</td>
             <td>{{ book.author }}</td>
             <td>{{ book.year }}</td>
-            <td>
-              <img src="" alt="" width="100" />
+            <!-- <td>
+              <img :src="book.cover" alt="Book Cover" width="100" />
             </td>
-            <td>{{ book.desc }}</td>
             <td>
-              <button
-                type="button"
-                class="btn btn-success"
-              >
-                <i class="bx bx-check-circle"></i>
-                Success
+              <p>{{ book.desc.substring(0, 20) }}{{ book.desc.length > 20 ? '...' : '' }}</p>
+            </td>
+            <td>
+              <button type="button" class="btn btn-success">
+                <i class="bx bx-check-circle"></i> Success
               </button>
-            </td>
+            </td> -->
             <td>
               <button class="btn btn-warning">Edit</button>
               <button class="btn btn-danger">Delete</button>
@@ -59,8 +56,9 @@
 
 <script>
 import axios from "axios";
+
 export default {
-  name: "RiwayatView",
+  name: "BooksView",
   data() {
     return {
       books: [],
@@ -71,15 +69,11 @@ export default {
   methods: {
     async getBooks() {
       try {
-        this.loading = true; 
+        this.loading = true;
         const response = await axios.get("http://127.0.0.1:8000/api/books");
         this.books = response.data.data;
       } catch (error) {
-        if (error.response.status === 401) {
-          this.$router.push("/login");
-        } else {
-          console.error(error);
-        }
+        console.error(error);
       } finally {
         this.loading = false;
       }
@@ -93,9 +87,9 @@ export default {
 </script>
 
 <style>
-  .loading {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
