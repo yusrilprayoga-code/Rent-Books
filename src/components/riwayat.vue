@@ -1,6 +1,5 @@
 <template>
     <div class="riwayattable mt-5">
-      <h1 class="text-left">Riwayat Peminjaman</h1>
       <div v-if="loading" class="loading">
         <div class="spinner-border text-primary align-content-center justify-content-center" role="status">
         </div>
@@ -25,7 +24,7 @@
               <td>{{ book.author }}</td>
               <td>{{ book.year }}</td>
               <td>
-                <img src="" alt="" width="100" />
+                <img :src="book.cover" alt="book" width="100" />
               </td>
               <td>{{ book.desc }}</td>
               <td>

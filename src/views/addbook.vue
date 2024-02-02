@@ -18,13 +18,13 @@
       </div>
       <div class="input mb-3">
           <label for="image" class="form-label">Cover</label>
-          <input type="file" class="form-control" id="image" @change="handleFileChange($event)" />
+          <input type="file" class="form-control" id="image" @change="handleFileChange" />
         </div>
         <div class="input mb-3">
           <label for="desc" class="form-label">Deskripsi</label>
           <textarea id="desc" class="form-control" v-model="deskripsi"></textarea>
         </div>
-        <div class="input mb-3">
+        <!-- <div class="input mb-3">
           <label for="status" class="form-label">Status</label>
           <select class="form-select" v-model="selectedStatus" aria-label="Default select example">
             <option selected disabled>Select Status</option>
@@ -32,7 +32,7 @@
             <option value="2">Peminjaman</option>
             <option value="3">Dipinjam</option>
           </select>
-        </div>
+        </div> -->
       <div class="input mb-3 d-grid">
         <button type="submit" class="btn btn-primary">Add</button>
       </div>
@@ -47,12 +47,21 @@ import axios from 'axios';
 const title = ref("");
 const author = ref("");
 const year = ref("");
+const cover = ref("");
+const deskripsi = ref("");
+
+const handleFileChange = async (e) => {
+  console.log(e.target.files[0]);
+  cover.value = e.target.files[0];
+};
 
 const addbook = async () => {
   const formData = new FormData();
   formData.append("title", title.value);
   formData.append("author", author.value);
   formData.append("year", year.value);
+  formData.append("file", cover.value);
+  formData.append("desc", deskripsi.value);
 
   try {
     axios.post("http://127.0.0.1:8000/api/books/add", formData, {

@@ -13,7 +13,7 @@
       <div class="spinner-border text-primary align-content-center justify-content-center" role="status"></div>
     </div>
     <div v-else>
-      <table class="table table-responsive table-dark table-striped">
+      <!-- <table class="table table-responsive table-dark table-striped">
         <thead>
           <tr>
             <th scope="col">No</th>
@@ -49,40 +49,43 @@
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
+      <riwayat />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import Riwayat from "@/components/riwayat.vue";
 
 export default {
-  name: "BooksView",
-  data() {
-    return {
-      books: [],
-      loading: false,
-    };
-  },
-
-  methods: {
-    async getBooks() {
-      try {
-        this.loading = true;
-        const response = await axios.get("http://127.0.0.1:8000/api/books");
-        this.books = response.data.data;
-      } catch (error) {
-        console.error(error);
-      } finally {
-        this.loading = false;
-      }
+    name: "BooksView",
+    data() {
+        return {
+            books: [],
+            loading: false,
+        };
     },
-  },
-
-  mounted() {
-    this.getBooks();
-  },
+    methods: {
+        async getBooks() {
+            try {
+                this.loading = true;
+                const response = await axios.get("http://127.0.0.1:8000/api/books");
+                this.books = response.data.data;
+            }
+            catch (error) {
+                console.error(error);
+            }
+            finally {
+                this.loading = false;
+            }
+        },
+    },
+    mounted() {
+        this.getBooks();
+    },
+    components: { Riwayat }
 };
 </script>
 
