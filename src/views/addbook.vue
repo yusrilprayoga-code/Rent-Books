@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="form mt-5 shadow">
+  <div class="form mt-2 shadow">
     <div class="title text-center">Add Book</div>
     <form class="form-input" @submit.prevent="addbook">
       <!-- <input type="hidden" name="id" v-model="id" /> -->
@@ -16,7 +16,7 @@
         <label for="year" class="form-label">Tahun Terbit</label>
         <input type="text" id="year" class="form-control" v-model="year" />
       </div>
-      <!-- <div class="input mb-3">
+      <div class="input mb-3">
           <label for="image" class="form-label">Cover</label>
           <input type="file" class="form-control" id="image" @change="handleFileChange($event)" />
         </div>
@@ -32,7 +32,7 @@
             <option value="2">Peminjaman</option>
             <option value="3">Dipinjam</option>
           </select>
-        </div> -->
+        </div>
       <div class="input mb-3 d-grid">
         <button type="submit" class="btn btn-primary">Add</button>
       </div>

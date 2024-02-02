@@ -32,17 +32,17 @@
             <td>{{ book.title }}</td>
             <td>{{ book.author }}</td>
             <td>{{ book.year }}</td>
-            <!-- <td>
+            <td>
               <img :src="book.cover" alt="Book Cover" width="100" />
             </td>
             <td>
-              <p>{{ book.desc.substring(0, 20) }}{{ book.desc.length > 20 ? '...' : '' }}</p>
+              <p>{{ book.desc.substring(0, 10) }}{{ book.desc.length > 10 ? '...' : '' }}</p>
             </td>
             <td>
               <button type="button" class="btn btn-success">
                 <i class="bx bx-check-circle"></i> Success
               </button>
-            </td> -->
+            </td>
             <td>
               <button class="btn btn-warning">Edit</button>
               <button class="btn btn-danger">Delete</button>
