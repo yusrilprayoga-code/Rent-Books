@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="container">
     <div class="row justify-content-center">
@@ -15,28 +14,14 @@
                   <hr />
                   <form @submit.prevent="login">
                     <div class="mb-3">
-                      <label for="email" class="form-label"
-                        >Email </label
-                      >
-                      <input
-                      v-model="email"
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        placeholder="Masukkan email..."
-                      />    
+                      <label for="email" class="form-label">Email </label>
+                      <input v-model="email" type="email" class="form-control" id="email"
+                        placeholder="Masukkan email..." />
                     </div>
                     <div class="mb-3">
-                      <label for="password" class="form-label"
-                        >Password</label
-                      >
-                      <input
-                        type="password"
-                        v-model="password"
-                        class="form-control"
-                        id="password"
-                        placeholder="Masukkan password..."
-                      />
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" v-model="password" class="form-control" id="password"
+                        placeholder="Masukkan password..." />
                     </div>
                     <div class="d-grid gap-2">
                       <button class="btn btn-success" type="submit">
@@ -46,9 +31,7 @@
                   </form>
                   <hr />
                   <div class="text-center mb-2">
-                  <router-link to="" class="small"
-                      >Forgot Password?</router-link
-                    >
+                    <router-link to="" class="small">Forgot Password?</router-link>
                   </div>
 
                 </div>
@@ -64,8 +47,7 @@
 <script>
 import axios from "axios";
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: "login",
+  name: "LoginView",
   data() {
     return {
       email: "",
@@ -76,7 +58,7 @@ export default {
   methods: {
     login() {
       if (this.email === "" || this.password === "") {
-        return; 
+        return;
       }
       axios
         .post("http://127.0.0.1:8000/api/login", {
@@ -93,7 +75,7 @@ export default {
         .catch((error) => {
           console.error(error);
         });
-      },
+    },
   },
 
   mounted() {

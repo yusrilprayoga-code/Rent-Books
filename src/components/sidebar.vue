@@ -23,9 +23,9 @@
       </router-link>
       <router-link to="/books" class="button">
         <i class="bx bx-book"></i>
-        <span class="text">Books</span>
+        <span class="text">Koleksi Buku</span>
       </router-link>
-      <router-link to="/peminjaman" class="button">
+      <router-link to="/rent" class="button">
         <i class="bx bx-group"></i>
         <span class="text">Peminjaman</span>
       </router-link>

@@ -1,8 +1,5 @@
 <template>
-    <div class="container">
-        <div class="title mt-3">
-            <h2>Daftar Peminjam</h2>
-        </div>
+    <div class="container mt-3">
         <div v-if="loading" class="loading">
             <div class="spinner-border text-primary align-content-center justify-content-center" role="status"></div>
         </div>
@@ -11,30 +8,33 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Judul</th>
                         <th scope="col">Peminjam</th>
+                        <th scope="col">Judul</th>
                         <th scope="col">Tanggal Pinjam</th>
                         <th scope="col">Tanggal Kembali</th>
                         <th scope="col">Status</th>
                         <th scope="col">Aksi</th>
                     </tr>
-                </thead>
+                </thead>    
                 <tbody>
                     <tr v-for="(rental, index) in rentals" :key="rental.id">
-                        <th scope="row">{{ index+1 }}</th>
-                        <td>{{ rental.book.title }}</td>
+                        <th scope="row">{{ index + 1 }}</th>
                         <td>{{ rental.peminjam }}</td>
+                        <td>{{ rental.book.title }}</td>
                         <td>{{ formatDate(rental.created_at) }}</td>
                         <td>{{ formatDate(rental.updated_at) }}</td>
                         <td>
-                            <div class="btn btn-success">
+                            <div v-if="rental.status == 'Dikembalikan'" class="btn btn-success">
                                 <i class="bx bx-check-circle"></i>{{ rental.status }}
+                            </div>
+                            <div v-if="rental.status == 'Dipinjam'" class="btn btn-warning">
+                                <i class="bx bx-loader"></i>{{ rental.status }}
                             </div>
                         </td>
                         <td>
                             <div class="btn-group">
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-success" :disabled="rental.status == 'Dikembalikan'">Selesai</button>
+                                <button class="btn btn-danger" :disabled="rental.status == 'Dipinjam'">Hapus</button>
                             </div>
                         </td>
                     </tr>
@@ -63,7 +63,7 @@ export default {
         async getRentals() {
             try {
                 this.loading = true;
-                const response  = await axios.get("http://127.0.0.1:8000/api/rent", {
+                const response = await axios.get("http://127.0.0.1:8000/api/rent", {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     },

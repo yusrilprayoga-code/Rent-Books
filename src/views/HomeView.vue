@@ -4,7 +4,9 @@
       <div class="col">
         <div class="card bg-success-subtle">
           <div class="card-body">
-            <h1 class="text-center">1</h1>
+            <h1 class="text-center">
+              {{ rental.length }}
+            </h1>
             <i class="bx bx-user homei"></i>
             <h5 class="card-title">User</h5>
           </div>
@@ -17,7 +19,7 @@
               {{ books.length }}
             </h1>
             <i class="bx bx-book homei"></i>
-            <h5 class="card-title">All Books</h5>
+            <h5 class="card-title">Jumlah Buku</h5>
           </div>
         </div>
       </div>
@@ -44,24 +46,22 @@
         </div>
       </div>
     </div>
-    <!-- <RiwayatView /> -->
     <RentTable />
   </div>
 </template>
 
 <script>
 import axios from "axios";
-// import RiwayatView from "@/components/riwayat.vue";
 import RentTable from "@/components/RentTable.vue";
 export default {
   name: "HomeView",
   components: {
-    // RiwayatView,
     RentTable
   },
   data() {
     return {
       books: [],
+      rental: [],
       rents: [],
       returned: []
     };
@@ -85,6 +85,7 @@ export default {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           },
         })
+        this.rental = response.data.data;
         this.rents = response.data.data.filter(item => item.status === "Dipinjam").map(item => {
           return {
             item

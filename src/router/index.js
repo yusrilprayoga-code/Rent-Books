@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import loginView from "../views/login.vue"
-import BooksView from "../views/books.vue"
-import PeminjamanView from "../views/peminjaman.vue"
+import LoginView from "../views/LoginView.vue"
+import BookView from "../views/BookView.vue"
+import RentView from "../views/RentView.vue"
 import addbook from "../views/addbook.vue"
 
 const routes = [
@@ -13,18 +13,18 @@ const routes = [
   },
   {
     path: '/books',
-    name: 'BooksView',
-    component: BooksView
+    name: 'BookView',
+    component: BookView
   },
   {
     path: '/login',
-    name: 'login',
-    component: loginView
+    name: 'LoginView',
+    component: LoginView
   },
   {
-    path: '/peminjaman',
-    name: 'PeminjamanView',
-    component: PeminjamanView
+    path: '/rent',
+    name: 'RentView',
+    component: RentView
   },
   {
     path: '/books/addbook',

@@ -1,28 +1,23 @@
 <template>
   <div class="home">
-    <h3 class="text-center">All Books</h3>
+    <h2 class="text-center">Koleksi Buku</h2>
     <router-link to="/books/addbook" class="btn btn-success">
       <i class="bx bx-plus"></i>
       <span class="text">Tambah Buku</span>
     </router-link>
-    <div v-if="loading" class="loading">
-      <div class="spinner-border text-primary align-content-center justify-content-center" role="status"></div>
-    </div>
-    <div v-else>  
-      <riwayat />
-    </div>
+    <BookCard />
   </div>
-  </template>
+</template>
 
 <script>
 import axios from "axios";
-import Riwayat from "@/components/riwayat.vue";
+import BookCard from "@/components/BookCard.vue";
 
 
 export default {
-  name: "BooksView",
+  name: "BookView",
   components: {
-    Riwayat
+    BookCard
   },
   data() {
     return {
