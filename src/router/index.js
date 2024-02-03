@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from "../views/LoginView.vue"
 import BookView from "../views/BookView.vue"
 import RentView from "../views/RentView.vue"
-import addbook from "../views/addbook.vue"
+import AddBook from "../views/AddBook.vue"
 
 const routes = [
   {
@@ -28,8 +28,8 @@ const routes = [
   },
   {
     path: '/books/addbook',
-    name: 'addbook',
-    component: addbook
+    name: 'AddBook',
+    component: AddBook
   }, 
 ]
 

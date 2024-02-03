@@ -1,42 +1,40 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="form mt-2 shadow">
-    <div class="title text-center">Add Book</div>
-    <form class="form-input" @submit.prevent="addbook()">
-      <!-- <input type="hidden" name="id" v-model="id" /> -->
-      <div class="input mb-3">
-        <label for="title" class="form-label">Judul</label>
-        <input type="text" id="title" class="form-control" v-model="title" />
-      </div>
-      <div class="input mb-3">
-        <label for="author" class="form-label">Pengarang</label>
-        <input type="text" id="author" class="form-control" v-model="author" />
-      </div>
-      <div class="input mb-3">
-        <label for="year" class="form-label">Tahun Terbit</label>
-        <input type="text" id="year" class="form-control" v-model="year" />
-      </div>
-      <div class="input mb-3">
-          <label for="image" class="form-label">Cover</label>
-          <input type="file" class="form-control" id="image" @change="handleFileChange" />
+  <div class="home">
+    <div class="row justify-content-start">
+      <div class="col-3">
+        <h2>Tambah Buku</h2>
+        <div class="card">
+          <img v-if="preview" :src="preview" height="400px" alt="preview">
         </div>
-        <div class="input mb-3">
-          <label for="desc" class="form-label">Deskripsi</label>
-          <textarea id="desc" class="form-control" v-model="deskripsi"></textarea>
-        </div>
-        <!-- <div class="input mb-3">
-          <label for="status" class="form-label">Status</label>
-          <select class="form-select" v-model="selectedStatus" aria-label="Default select example">
-            <option selected disabled>Select Status</option>
-            <option value="1">Success</option>
-            <option value="2">Peminjaman</option>
-            <option value="3">Dipinjam</option>
-          </select>
-        </div> -->
-      <div class="input mb-3 d-grid">
-        <button type="submit" class="btn btn-primary">Add</button>
       </div>
-    </form>
+      <div class="col-9">
+        <form class="form-input" @submit.prevent="addbook()">
+          <div class="input mb-3">
+            <label for="title" class="form-label">Judul</label>
+            <input type="text" id="title" class="form-control" v-model="title" required />
+          </div>
+          <div class="input mb-3">
+            <label for="author" class="form-label">Pengarang</label>
+            <input type="text" id="author" class="form-control" v-model="author" required/>
+          </div>
+          <div class="input mb-3">
+            <label for="year" class="form-label">Tahun Terbit</label>
+            <input type="text" id="year" class="form-control" v-model="year" required/>
+          </div>
+          <div class="input mb-3">
+            <label for="image" class="form-label">Cover</label>
+            <input type="file" class="form-control" id="image" @change="handleFileChange" required/>
+          </div>
+          <div class="input mb-3">
+            <label for="desc" class="form-label">Deskripsi</label>
+            <textarea id="desc" class="form-control" rows="5" v-model="deskripsi" required></textarea>
+          </div>
+          <div class="input mb-3 d-grid">
+            <button type="submit" class="btn btn-success">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -48,11 +46,13 @@ const title = ref("");
 const author = ref("");
 const year = ref("");
 const cover = ref("");
+const preview = ref("");
 const deskripsi = ref("");
 
 const handleFileChange = async (e) => {
   console.log(e.target.files[0]);
   cover.value = e.target.files[0];
+  preview.value = URL.createObjectURL(e.target.files[0]);
 };
 
 const addbook = async () => {
@@ -80,7 +80,9 @@ const addbook = async () => {
   } catch (error) {
     console.error("Error adding book:", error);
   }
-  window.location.href = "#/books";
+  setTimeout(() => {
+    window.location.href = "#/books";
+  }, 1000);
 };
 
 
@@ -88,42 +90,7 @@ const addbook = async () => {
 
 <style>
 .form-input {
-  width: 70%;
-  margin: 0 auto;
-}
-
-.form {
-  width: fit-content;
-  padding: 20px;
-  position: relative;
-  align-items: center;
-  margin: 0 auto;
-  border-radius: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-label {
-  font-weight: bold;
-}
-
-.form-control {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
+  width: 60%;
+  margin-left: 40px;
 }
 </style>

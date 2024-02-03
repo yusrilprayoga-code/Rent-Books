@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-10 col-lg-12 col-md-9">
-        <div class="card o-hidden border-0 shadow-lg my-5 bg-light">
+        <div class="card o-hidden border-0 shadow my-5 bg-light">
           <div class="card-body p-0">
             <div class="row">
               <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
@@ -15,12 +15,12 @@
                   <form @submit.prevent="login">
                     <div class="mb-3">
                       <label for="email" class="form-label">Email </label>
-                      <input v-model="email" type="email" class="form-control" id="email"
+                      <input v-model="email" type="email" class="form-control" id="email" required
                         placeholder="Masukkan email..." />
                     </div>
                     <div class="mb-3">
                       <label for="password" class="form-label">Password</label>
-                      <input type="password" v-model="password" class="form-control" id="password"
+                      <input type="password" v-model="password" class="form-control" id="password" required 
                         placeholder="Masukkan password..." />
                     </div>
                     <div class="d-grid gap-2">
@@ -57,9 +57,6 @@ export default {
 
   methods: {
     login() {
-      if (this.email === "" || this.password === "") {
-        return;
-      }
       axios
         .post("http://127.0.0.1:8000/api/login", {
           email: this.email,

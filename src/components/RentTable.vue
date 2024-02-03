@@ -24,17 +24,17 @@
                         <td>{{ formatDate(rental.created_at) }}</td>
                         <td>{{ formatDate(rental.updated_at) }}</td>
                         <td>
-                            <div v-if="rental.status == 'Dikembalikan'" class="btn btn-success">
+                            <div v-if="rental.status == 'Dikembalikan'" class="btn btn-sm btn-success">
                                 <i class="bx bx-check-circle"></i>{{ rental.status }}
                             </div>
-                            <div v-if="rental.status == 'Dipinjam'" class="btn btn-warning">
+                            <div v-if="rental.status == 'Dipinjam'" class="btn btn-sm btn-warning">
                                 <i class="bx bx-loader"></i>{{ rental.status }}
                             </div>
                         </td>
                         <td>
                             <div class="btn-group">
-                                <button class="btn btn-success" :disabled="rental.status == 'Dikembalikan'">Selesai</button>
-                                <button class="btn btn-danger" :disabled="rental.status == 'Dipinjam'">Hapus</button>
+                                <button class="btn btn-sm btn-success" :disabled="rental.status == 'Dikembalikan'">Selesai</button>
+                                <button class="btn btn-sm btn-danger" :disabled="rental.status == 'Dipinjam'">Hapus</button>
                             </div>
                         </td>
                     </tr>

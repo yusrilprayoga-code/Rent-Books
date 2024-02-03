@@ -4,13 +4,13 @@
             <div class="spinner-border text-primary align-content-center justify-content-center" role="status"></div>
         </div>
         <div v-else class="row">
-            <div v-for="book in books" :key="book.id" class="col-md-3">
-                <div class="card mb-3">
-                    <img :src="`http://127.0.0.1:8000/storage/cover/` + book.cover" height="400px" alt="">
+            <div v-for="(book, index) in books" :key="book.id" class="col-md-3">
+                <div v-if="index < limit" class="card mb-3">
+                    <img :src="`http://127.0.0.1:8000/storage/cover/` + book.cover" height="300px" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">{{ book.title }}</h5>
+                        <h6 class="card-title">{{ book.title }}</h6>
                         <p class="card-text">{{ book.author }}</p>
-                        <a class="btn btn-primary">Description</a>
+                        <a class="btn btn-sm btn-success">Description</a>
                     </div>
                 </div>
             </div>
@@ -23,6 +23,7 @@ import axios from "axios";
 
 export default {
     name: 'BookCard',
+    props: ['limit'],
     data() {
         return {
             loading: false,

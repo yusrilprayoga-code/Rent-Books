@@ -57,9 +57,9 @@ const toggleMenu = () => {
 
   const data = reactive({
     User: "",
-    logout() {
-      localStorage.removeItem("token");
-    },
+    // logout() {
+    //   localStorage.removeItem("token");
+    // },
   });
 
 
@@ -91,6 +91,9 @@ const logout = async () => {
     localStorage.removeItem("token");
     loginAuth.value = false;
     window.location.href = "#/login";
+    setTimeout(() => {
+      window.location.reload();
+    }, 1);
   } catch (error) {
     console.log(error);
   }

@@ -4,59 +4,89 @@
       <div class="col">
         <div class="card bg-success-subtle">
           <div class="card-body">
-            <h1 class="text-center">
+            <h1 class="text-center text-success">
               {{ rental.length }}
             </h1>
-            <i class="bx bx-user homei"></i>
-            <h5 class="card-title">User</h5>
+            <i class="bx bx-user homei text-success"></i>
+            <h5 class="card-title text-success">User</h5>
           </div>
         </div>
       </div>
       <div class="col">
-        <div class="card bg-primary-subtle">
+        <div class="card bg-success-subtle">
           <div class="card-body">
-            <h1 class="text-center">
+            <h1 class="text-center text-success">
               {{ books.length }}
             </h1>
-            <i class="bx bx-book homei"></i>
-            <h5 class="card-title">Jumlah Buku</h5>
+            <i class="bx bx-book homei text-success"></i>
+            <h5 class="card-title text-success">Jumlah Buku</h5>
           </div>
         </div>
       </div>
       <div class="col">
-        <div class="card bg-warning-subtle">
+        <div class="card bg-success-subtle">
           <div class="card-body">
-            <h1 class="text-center">
+            <h1 class="text-center text-success">
               {{ rents.length }}
             </h1>
-            <i class="bx bx-book homei"></i>
-            <h5 class="card-title">Peminjaman</h5>
+            <i class="bx bx-book homei text-success"></i>
+            <h5 class="card-title text-success">Peminjaman</h5>
           </div>
         </div>
       </div>
       <div class="col">
-        <div class="card bg-danger-subtle">
+        <div class="card bg-success-subtle">
           <div class="card-body">
-            <h1 class="text-center">
+            <h1 class="text-center text-success">
               {{ returned.length }}
             </h1>
-            <i class="bx bx-book homei"></i>
-            <h5 class="card-title">Pengembalian</h5>
+            <i class="bx bx-book homei text-success"></i>
+            <h5 class="card-title text-success">Pengembalian</h5>
           </div>
         </div>
       </div>
     </div>
-    <RentTable />
+    <div class="row mt-3">
+      <div class="col">
+        <h3 class="">Koleksi Buku</h3>
+      </div>
+      <div class="col text-end">
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Lihat Daftar Peminjam
+        </button>
+      </div>
+    </div>
+    <BookCard limit="4" />
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Daftar Peminjam</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <RentTable />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import RentTable from "@/components/RentTable.vue";
+import BookCard from "@/components/BookCard.vue";
 export default {
   name: "HomeView",
   components: {
-    RentTable
+    RentTable, 
+    BookCard
   },
   data() {
     return {

@@ -1,11 +1,11 @@
 <template>
   <div class="home">
     <h2 class="text-center">Koleksi Buku</h2>
-    <router-link to="/books/addbook" class="btn btn-success">
+    <router-link to="/books/addbook" class="btn btn-outline-success">
       <i class="bx bx-plus"></i>
       <span class="text">Tambah Buku</span>
     </router-link>
-    <BookCard />
+    <BookCard limit="10"/>
   </div>
 </template>
 
