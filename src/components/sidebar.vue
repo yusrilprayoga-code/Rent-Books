@@ -29,10 +29,6 @@
         <i class="bx bx-group"></i>
         <span class="text">Peminjaman</span>
       </router-link>
-      <router-link to="/harga" class="button">
-        <i class="bx bx-money"></i>
-        <span class="text">Harga</span>
-      </router-link>
     </div>
 
     <div class="flex"></div>

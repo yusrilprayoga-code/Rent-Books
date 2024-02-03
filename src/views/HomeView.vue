@@ -25,7 +25,7 @@
         <div class="card bg-warning-subtle">
           <div class="card-body">
             <h1 class="text-center">
-              {{ books.length }}
+              {{ rents.length }}
             </h1>
             <i class="bx bx-book homei"></i>
             <h5 class="card-title">Peminjaman</h5>
@@ -36,7 +36,7 @@
         <div class="card bg-danger-subtle">
           <div class="card-body">
             <h1 class="text-center">
-              {{ books.length }}
+              {{ returned.length }}
             </h1>
             <i class="bx bx-book homei"></i>
             <h5 class="card-title">Pengembalian</h5>
@@ -44,23 +44,26 @@
         </div>
       </div>
     </div>
-
-    <!-- Riwayat Table -->
-    <RiwayatView />
+    <!-- <RiwayatView /> -->
+    <RentTable />
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import RiwayatView from "@/components/riwayat.vue";
+// import RiwayatView from "@/components/riwayat.vue";
+import RentTable from "@/components/RentTable.vue";
 export default {
   name: "HomeView",
   components: {
-    RiwayatView,
+    // RiwayatView,
+    RentTable
   },
   data() {
     return {
       books: [],
+      rents: [],
+      returned: []
     };
   },
 
@@ -74,11 +77,35 @@ export default {
         console.error(error);
       }
     },
+    async getRentals() {
+      try {
+        this.loading = true;
+        const response = await axios.get("http://127.0.0.1:8000/api/rent", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          },
+        })
+        this.rents = response.data.data.filter(item => item.status === "Dipinjam").map(item => {
+          return {
+            item
+          }
+        });
+        this.returned = response.data.data.filter(item => item.status === "Dikembalikan").map(item => {
+          return {
+            item
+          }
+        });
+        console.log(this.rentals);
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
   },
 
   mounted() {
     this.getBooks();
+    this.getRentals();
   },
 };
 </script>
