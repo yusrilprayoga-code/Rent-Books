@@ -15,22 +15,22 @@
           </div>
           <div class="input mb-3">
             <label for="author" class="form-label">Pengarang</label>
-            <input type="text" id="author" class="form-control" v-model="author" required/>
+            <input type="text" id="author" class="form-control" v-model="author" required />
           </div>
           <div class="input mb-3">
             <label for="year" class="form-label">Tahun Terbit</label>
-            <input type="text" id="year" class="form-control" v-model="year" required/>
+            <input type="text" id="year" class="form-control" v-model="year" required />
           </div>
           <div class="input mb-3">
             <label for="image" class="form-label">Cover</label>
-            <input type="file" class="form-control" id="image" @change="handleFileChange" required/>
+            <input type="file" class="form-control" id="image" @change="handleFileChange" required />
           </div>
           <div class="input mb-3">
             <label for="desc" class="form-label">Deskripsi</label>
             <textarea id="desc" class="form-control" rows="5" v-model="deskripsi" required></textarea>
           </div>
           <div class="input mb-3 d-grid">
-            <button type="submit" class="btn btn-success">Add</button>
+            <button type="submit" class="btn btn-success">Tambah</button>
           </div>
         </form>
       </div>

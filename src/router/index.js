@@ -4,6 +4,7 @@ import LoginView from "../views/LoginView.vue"
 import BookView from "../views/BookView.vue"
 import RentView from "../views/RentView.vue"
 import AddBook from "../views/AddBook.vue"
+import EditBook from "../views/EditBook.vue"
 
 const routes = [
   {
@@ -31,6 +32,12 @@ const routes = [
     name: 'AddBook',
     component: AddBook
   }, 
+  {
+    path: '/books/:id',
+    name: 'EditBook',
+    component: EditBook
+  }, 
+
 ]
 
 const router = createRouter({

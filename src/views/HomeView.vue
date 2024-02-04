@@ -30,7 +30,7 @@
               {{ rents.length }}
             </h1>
             <i class="bx bx-book homei text-success"></i>
-            <h5 class="card-title text-success">Peminjaman</h5>
+            <h5 class="card-title text-success">Dipinjam</h5>
           </div>
         </div>
       </div>
