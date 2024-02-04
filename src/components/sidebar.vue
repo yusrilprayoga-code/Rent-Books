@@ -57,9 +57,6 @@ const toggleMenu = () => {
 
   const data = reactive({
     User: "",
-    // logout() {
-    //   localStorage.removeItem("token");
-    // },
   });
 
 
@@ -112,6 +109,7 @@ aside {
   height: 100vh;
   overflow: hidden;
   transition: width 0.3s ease;
+  position: fixed;
 }
 
 .logo {

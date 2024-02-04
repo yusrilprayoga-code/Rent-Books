@@ -38,4 +38,10 @@ export default {
   box-sizing: border-box;
   font-family: poppins, sans-serif;
 }
+
+.content {
+  transition: 0.5s;
+  position: relative;
+  margin-left: 120px;
+}
 </style>
