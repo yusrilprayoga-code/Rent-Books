@@ -41,7 +41,6 @@ export default {
 
 .content {
   transition: 0.5s;
-  position: relative;
   margin-left: 120px;
 }
 </style>
