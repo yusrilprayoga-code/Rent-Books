@@ -89,10 +89,12 @@ export default {
                     },
                 })
                     .then(response => {
+                        alert("Buku berhasil diubah");
                         console.log("Book added successfully:", response.data);
                         this.$router.push("/books");
                     })
                     .catch(error => {
+                        alert("Gagal mengubah buku")
                         console.error("Error adding book:", error.response ? error.response.data : error.message);
                     });
             } catch (error) {

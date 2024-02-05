@@ -72,10 +72,12 @@ const addbook = async () => {
       },
     })
       .then(response => {
+        alert("Buku berhasil ditambahkan");
         console.log("Book added successfully:", response.data);
         this.$router.push("/books");
       })
       .catch(error => {
+        alert("Gagal menambahkan buku")
         console.error("Error adding book:", error.response ? error.response.data : error.message);
       });
   } catch (error) {
