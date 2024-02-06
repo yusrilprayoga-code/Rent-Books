@@ -5,7 +5,6 @@ import BookView from "../views/BookView.vue"
 import RentView from "../views/RentView.vue"
 import AddBook from "../views/addbook.vue"
 import EditBook from "../views/EditBook.vue"
-import AddRent from '@/views/AddRent.vue'
 
 const routes = [
   {
@@ -37,12 +36,7 @@ const routes = [
     path: '/books/:id',
     name: 'EditBook',
     component: EditBook
-  }, 
-  {
-    path: '/rent/add',
-    name: 'AddRent',
-    component: AddRent
-  }
+  },
 
 ]
 

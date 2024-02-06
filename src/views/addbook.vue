@@ -72,9 +72,9 @@ const addbook = async () => {
       },
     })
       .then(response => {
-        alert("Buku berhasil ditambahkan");
         console.log("Book added successfully:", response.data);
         this.$router.push("/books");
+        alert("Buku berhasil ditambahkan");
       })
       .catch(error => {
         alert("Gagal menambahkan buku")
@@ -83,9 +83,6 @@ const addbook = async () => {
   } catch (error) {
     console.error("Error adding book:", error);
   }
-  setTimeout(() => {
-    window.location.href = "#/books";
-  }, 1000);
 };
 
 
