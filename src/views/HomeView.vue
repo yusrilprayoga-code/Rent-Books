@@ -8,7 +8,7 @@
               {{ rental.length }}
             </h1>
             <i class="bx bx-user homei text-success"></i>
-            <h5 class="card-title text-success">User</h5>
+            <h5 class="card-title text-success">Peminjam</h5>
           </div>
         </div>
       </div>
@@ -41,22 +41,27 @@
               {{ returned.length }}
             </h1>
             <i class="bx bx-book homei text-success"></i>
-            <h5 class="card-title text-success">Pengembalian</h5>
+            <h5 class="card-title text-success">Dikembalikan</h5>
           </div>
         </div>
       </div>
     </div>
-    <div class="row mt-3">
+    <div class="row mt-5">
       <div class="col">
         <h3 class="">Koleksi Buku</h3>
       </div>
       <div class="col text-end">
-        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#exampleModal">
           Lihat Daftar Peminjam
         </button>
       </div>
     </div>
-    <BookCard limit="4" />
+    <BookCard :limit=count />
+    <div class="row">
+      <div class="text-center">
+        <button class="btn rounded-pill btn-outline-success fw-bold btn-lg" v-show="count == 4" @click="lihatSemua" >Lihat Semua</button>
+      </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,7 +98,8 @@ export default {
       books: [],
       rental: [],
       rents: [],
-      returned: []
+      returned: [],
+      count: 4,
     };
   },
 
@@ -130,8 +136,10 @@ export default {
       } catch (error) {
         console.error(error);
       }
-    }
-
+    }, 
+    lihatSemua() { 
+      return this.count = 1/0;
+    },  
   },
 
   mounted() {
