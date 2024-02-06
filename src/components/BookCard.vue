@@ -44,7 +44,7 @@
                           <label for="nameInput" class="form-label">Konfirmasi</label>
                           <input type="name" class="form-control" :class="{'is-invalid': !valid}" id="nameInput" v-model="v" @change  ="confirmName(v)"  required placeholder="Konfirmasi Nama Anda">
                           <div class="invalid-feedback">
-                            Samakan dengan nama Anda
+                            Samakan dengan nama peminjam
                           </div>
                           <div class="valid-feedback">
                             Naisu !!!
