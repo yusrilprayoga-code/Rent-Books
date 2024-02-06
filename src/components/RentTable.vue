@@ -3,7 +3,7 @@
         <div v-if="loading" class="loading">
             <div class="spinner-border text-primary align-content-center justify-content-center" role="status"></div>
         </div>
-        <div v-else class="peminjaman">
+        <div v-else class="peminjaman text-center">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -22,7 +22,7 @@
                         <td>{{ rental.peminjam }}</td>
                         <td>{{ rental.book.title }}</td>
                         <td>{{ formatDate(rental.created_at) }}</td>
-                        <td>{{ formatDate(rental.updated_at) }}</td>
+                        <td>{{ rental.updated_at != rental.created_at ? formatDate(rental.updated_at) : "-" }}</td>
                         <td>
                             <div v-if="rental.status == 'Dikembalikan'" class="btn btn-sm btn-success">
                                 <i class="bx bx-check-circle"></i>{{ rental.status }}

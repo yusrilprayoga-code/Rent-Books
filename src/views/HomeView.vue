@@ -126,7 +126,7 @@ export default {
             item
           }
         });
-        console.log(this.rentals);
+        console.log(this.rental);
       } catch (error) {
         console.error(error);
       }
@@ -144,7 +144,7 @@ export default {
 <style>
 .home {
   margin: 50px auto;
-  max-width: 1000px;
+  max-width: 1100px;
   padding: 0 20px 0 15px;
 }
 
