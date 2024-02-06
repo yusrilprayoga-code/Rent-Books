@@ -15,14 +15,14 @@
                         <th scope="col">Status</th>
                         <th scope="col">Aksi</th>
                     </tr>
-                </thead>    
+                </thead>
                 <tbody>
                     <tr v-for="(rental, index) in rentals" :key="rental.id">
                         <th scope="row">{{ index + 1 }}</th>
                         <td>{{ rental.peminjam }}</td>
                         <td>{{ rental.book.title }}</td>
                         <td>{{ formatDate(rental.created_at) }}</td>
-                        <td>{{ rental.updated_at != rental.created_at ? formatDate(rental.updated_at) : "-" }}</td>
+                        <td>{{ rental.status != "Dipinjam" ? formatDate(rental.updated_at) : "-" }}</td>
                         <td>
                             <div v-if="rental.status == 'Dikembalikan'" class="btn btn-sm btn-success">
                                 <i class="bx bx-check-circle"></i>{{ rental.status }}
@@ -33,7 +33,8 @@
                         </td>
                         <td>
                             <div class="btn-group">
-                                <button class="btn btn-sm btn-success" :disabled="rental.status == 'Dikembalikan'">Selesai</button>
+                                <button class="btn btn-sm btn-success" :disabled="rental.status == 'Dikembalikan'"
+                                    @click="dikembalikan(rental.id)">Selesai</button>
                                 <button class="btn btn-sm btn-danger" :disabled="rental.status == 'Dipinjam'">Hapus</button>
                             </div>
                         </td>
@@ -75,7 +76,37 @@ export default {
             } finally {
                 this.loading = false;
             }
-        }
+        },
+        dikembalikan(id) {
+            if (confirm("Yakin ?") == true) {
+                const formData = new FormData();
+                formData.set("status", "Dikembalikan");
+    
+                try {
+                    axios.post("http://127.0.0.1:8000/api/store/" + id, formData, {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                            "Content-Type": "multipart/form-data",
+                        },
+                    })
+                        .then(response => {
+                            console.log("Data updated successfully:", response.data);
+                            this.$router.push("/rent");
+                            setTimeout(() => {
+                                this.$router.go();
+                                alert("Data berhasil diubah");
+                            }, 10);
+                        })
+                        .catch(error => {
+                            alert("Gagal mengubah data")
+                            console.error("Error adding book:", error.response ? error.response.data : error.message);
+                        });
+                } catch (error) {
+                    console.error("Error adding book:", error);
+                }
+                console.log(formData);
+            }
+        },
     },
     mounted() {
         this.getRentals()
