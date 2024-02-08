@@ -91,7 +91,7 @@ export default {
                     .then(response => {
                         alert("Buku berhasil diubah");
                         console.log("Book added successfully:", response.data);
-                        // this.$router.push("/books");
+                        this.$router.push("/books");
                     })
                     .catch(error => {
                         alert("Gagal mengubah buku")
