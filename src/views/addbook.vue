@@ -74,7 +74,7 @@ const addbook = async () => {
       .then(response => {
         alert("Buku berhasil ditambahkan");
         console.log("Book added successfully:", response.data);
-        window.location.href="/books"
+        window.location.href="#/books"
       })
       .catch(error => {
         alert("Gagal menambahkan buku")
